@@ -7,11 +7,12 @@
 using Foundation;
 using System;
 using System.CodeDom.Compiler;
+using UIKit;
 
 namespace JSONTest.iOS
 {
-    [Register ("QuizCollectionViewCell")]
-    partial class QuizCollectionViewCell
+    [Register ("QuizNavigationController")]
+    partial class QuizNavigationController
     {
         void ReleaseDesignerOutlets ()
         {

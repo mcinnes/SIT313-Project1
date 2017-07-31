@@ -20,6 +20,10 @@ namespace JSONTest.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel OptionsLabel { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel questionLabel { get; set; }
 
         [Outlet]
@@ -34,11 +38,20 @@ namespace JSONTest.iOS
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void sliderChanged (UIKit.UISlider sender);
 
+        [Action ("SubmitQuestion:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void SubmitQuestion (UIKit.UIButton sender);
+
         void ReleaseDesignerOutlets ()
         {
             if (answerLabel != null) {
                 answerLabel.Dispose ();
                 answerLabel = null;
+            }
+
+            if (OptionsLabel != null) {
+                OptionsLabel.Dispose ();
+                OptionsLabel = null;
             }
 
             if (questionLabel != null) {
