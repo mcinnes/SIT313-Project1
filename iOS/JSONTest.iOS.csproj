@@ -140,9 +140,13 @@
     <Compile Include="QuizNavigationController.designer.cs">
       <DependentUpon>QuizNavigationController.cs</DependentUpon>
     </Compile>
-    <Compile Include="ScaleQuestionViewController.cs" />
-    <Compile Include="ScaleQuestionViewController.designer.cs">
-      <DependentUpon>ScaleQuestionViewController.cs</DependentUpon>
+    <Compile Include="TextAreaQuestionViewController.cs" />
+    <Compile Include="TextAreaQuestionViewController.designer.cs">
+      <DependentUpon>TextAreaQuestionViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DateQuestionViewController.cs" />
+    <Compile Include="DateQuestionViewController.designer.cs">
+      <DependentUpon>DateQuestionViewController.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

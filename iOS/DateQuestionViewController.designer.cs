@@ -11,8 +11,8 @@ using UIKit;
 
 namespace JSONTest.iOS
 {
-    [Register("ScaleQuestionViewController")]
-    partial class ScaleQuestionViewController
+    [Register("DateQuestionViewController")]
+    partial class DateQuestionViewController
     {
         void ReleaseDesignerOutlets()
         {
