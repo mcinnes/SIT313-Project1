@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
-
 namespace JSONTest
 {
     public class QuizHandler
@@ -13,9 +12,12 @@ namespace JSONTest
         public QuizHandler()
         {
            Question nextQuestion = CurrentQuiz.questions[0];
-            if (nextQuestion.type == "slidingOption"){
+            if (nextQuestion.type == "slidingOption")
+            {
+                PushVC(1);
+            }
+            else if (nextQuestion.type == ""){
                 
-                PushVC();
             }
         }
         public void PushVC(int VCType){

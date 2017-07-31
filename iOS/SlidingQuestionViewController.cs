@@ -9,7 +9,9 @@ namespace JSONTest.iOS
         public SlidingQuestionViewController (IntPtr handle) : base (handle)
         {
         }
-
+        public SlidingQuestionViewController (decimal start, decimal end, decimal increment){
+            
+        }
         partial void sliderChanged(UISlider sender)
         {
             answerLabel.Text = sliderControl.Value.ToString();
