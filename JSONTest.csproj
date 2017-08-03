@@ -33,6 +33,7 @@
     <Compile Include="Question.cs" />
     <Compile Include="Quiz.cs" />
     <Compile Include="QuizHandler.cs" />
+    <Compile Include="NotImplementedException.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
@@ -41,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Licenses.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
 </Project>

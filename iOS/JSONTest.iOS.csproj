@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
@@ -28,7 +27,7 @@
     <MtouchArch>i386, x86_64</MtouchArch>
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <PlatformTarget>x86</PlatformTarget>
-<MtouchSdkVersion>10.0</MtouchSdkVersion>
+    <MtouchSdkVersion>10.0</MtouchSdkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>pdbonly</DebugType>
@@ -100,6 +99,12 @@
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-60%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-60%403x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-Small.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-Small-40%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -144,14 +149,33 @@
     <Compile Include="TextAreaQuestionViewController.designer.cs">
       <DependentUpon>TextAreaQuestionViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="DateQuestionViewController.cs" />
     <Compile Include="DateQuestionViewController.designer.cs">
       <DependentUpon>DateQuestionViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DateQuestionViewController.cs" />
+    <Compile Include="ScaleQuestionViewController.cs" />
+    <Compile Include="ScaleQuestionViewController.designer.cs">
+      <DependentUpon>ScaleQuestionViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TextBoxQuestionViewController.cs" />
+    <Compile Include="TextBoxQuestionViewController.designer.cs">
+      <DependentUpon>TextBoxQuestionViewController.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\quizzes_sample.json" />
-    <BundleResource Include="quizzes_sample.json" />
+    <BundleResource Include="Resources\blue_white_button.png" />
+    <BundleResource Include="Resources\correct_button.png" />
+    <BundleResource Include="Resources\green_button.png" />
+    <BundleResource Include="Resources\green_whote_button.png" />
+    <BundleResource Include="Resources\grey_button.png" />
+    <BundleResource Include="Resources\incorrect_button.png" />
+    <BundleResource Include="Resources\Logo.png" />
+    <BundleResource Include="Resources\red_button.png" />
+    <BundleResource Include="Resources\orange_quiz.png" />
+    <BundleResource Include="Resources\teal_button.png" />
+    <BundleResource Include="Resources\bg.png" />
+    <BundleResource Include="Resources\Splash.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

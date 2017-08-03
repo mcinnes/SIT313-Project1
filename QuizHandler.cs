@@ -14,51 +14,57 @@ namespace JSONTest
         
         public void setQuiz(Quiz quiz){
             CurrentQuiz = quiz;
-            Question nextQuestion = CurrentQuiz.questions[4];
             
         }
         public QuizHandler(){
-          CurrentQuestion = 4;
+        //Set current question index to 0 when new quiz is started
+          CurrentQuestion = 0;
         }
-        public Question GetQuestion(){
-            return CurrentQuiz.questions[CurrentQuestion];
-        }  
+       
         public void CheckAnswer(){
 
         }
-        public Question StartQuiz(){
-            return CurrentQuiz.questions[CurrentQuestion];
+        //
+        public String StartQuiz(){
+            //Reset question index for new quiz
+            CurrentQuestion = 0;
+            //Reset score for new quiz
+            CurrentScore = 0;
+            
+            //Return the first question type as a string
+            return CurrentQuiz.questions[CurrentQuestion].type;
         }
         
         public String NextQuestion(){
             CurrentQuestion++;
-
+            
+            //Returns the next questions type so the correct view can be loaded
             if (CurrentQuestion <= CurrentQuiz.questions.Count){
                 return CurrentQuiz.questions[CurrentQuestion].type;            
             } else {
+                //If there are no more questions return "ended" to move to the end screen
                 return "ended";
             }
             
         }
-        // Lock synchronization object
+         public Question GetQuestion(){
+            //Returns the next question in its full form
+            return CurrentQuiz.questions[CurrentQuestion];
+        }  
+        
+        // Lock the QuizHandler object so only one instance can be created at a time.
 		 private static object syncLock = new object();
 		 
 		 public static QuizHandler Instance
 		 {
-		 get
-		 {
-		 // Support multithreaded applications through
-		 // 'Double checked locking' pattern which (once
-		 // the instance exists) avoids locking each
-		 // time the method is invoked
-		 lock (syncLock)
-		 {
-		    if (QuizHandler.instance == null)
-		         QuizHandler.instance = new QuizHandler();
-		 
-		     return QuizHandler.instance;
-		 }
-		 }
+		    get{
+		      lock (syncLock){
+	           if (QuizHandler.instance == null){
+                QuizHandler.instance = new QuizHandler();
+               }
+		        return QuizHandler.instance;
+		       }
+            }
 		 }
  
         

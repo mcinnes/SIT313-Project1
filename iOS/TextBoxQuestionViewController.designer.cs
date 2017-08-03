@@ -7,13 +7,16 @@
 using Foundation;
 using System;
 using System.CodeDom.Compiler;
-using UIKit;
 
 namespace JSONTest.iOS
 {
-    [Register ("DateQuestionViewController")]
-    partial class DateQuestionViewController
+    [Register ("TextBoxQuestionViewController")]
+    partial class TextBoxQuestionViewController
     {
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField answerTextBox { get; set; }
+
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel questionLabel { get; set; }
@@ -28,6 +31,11 @@ namespace JSONTest.iOS
 
         void ReleaseDesignerOutlets ()
         {
+            if (answerTextBox != null) {
+                answerTextBox.Dispose ();
+                answerTextBox = null;
+            }
+
             if (questionLabel != null) {
                 questionLabel.Dispose ();
                 questionLabel = null;

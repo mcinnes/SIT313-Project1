@@ -8,72 +8,52 @@ namespace JSONTest.iOS
 {
     public partial class ViewController : UIViewController
     {
-        int count = 1;
-        QuizHandler qHandle;
-        Question testQu;
+        string firstQuestionType;
         public ViewController(IntPtr handle) : base(handle)
+         
         {
         }
 
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-
-            // Perform any additional setup after loading the view, typically from a nib.
-            Button.AccessibilityIdentifier = "myButton";
-            Button.SetTitle("fuck", UIControlState.Normal);
-            Button.TouchUpInside += delegate
-            {
-                var title = string.Format("{0} clicks!", count++);
-                Button.SetTitle(title, UIControlState.Normal);
-            };
+            
+            //Set background image from file
+            UIImage bgImage = new UIImage(filename: "bg.png");
+            this.View.BackgroundColor = UIColor.FromPatternImage(bgImage);
+            
+            //Set title of home screen
+            NavigationItem.Title = "SIT313 Quiz App";
+            
+            //Load quiz data from json file
 	        JSONTest();            
         }
         
         public void JSONTest(){
         
-        //Quiz q = JsonConvert.DeserializeObject<Quiz>(File.ReadAllText(@"quizzes_sample.json"));
-       
-        
-	    var observation = JsonConvert.DeserializeObject<List<Quiz>>(File.ReadAllText(@"quizzes_sample.json"));
+        //Load each quiz into a list of type Quiz
+	    var quizList = JsonConvert.DeserializeObject<List<Quiz>>(File.ReadAllText(@"quizzes_sample.json"));
 	        
-        Console.WriteLine(observation.Count.ToString());
-
-        foreach (Quiz q in observation){
-            Console.WriteLine(q.title);
-            Console.WriteLine(q.questions.Count.ToString());
-                foreach (Question qi in q.questions){
-                  Console.WriteLine(qi.text);
-                }
-                
-        }
+        //Tell the app to use the first quiz
+        App.quizHandler.setQuiz(quizList[0]);
         
-            Quiz qu = observation[0];
-            testQu = qu.questions[4];
-            Console.WriteLine(testQu.id);
-            App.quizHandler.setQuiz(observation[0]);
-                            
-           // PerformSegue("sliding", Self);
+        firstQuestionType = App.quizHandler.StartQuiz();
+       
            
 	    }
 
+
         partial void changeView(UIButton sender)
         {
-            throw new NotImplementedException();
+            
+            this.NavigationController.PerformSegue(firstQuestionType, this);
         }
+        
         public override void PrepareForSegue(UIStoryboardSegue segue, Foundation.NSObject sender)
         {
             base.PrepareForSegue(segue, sender);
 
-            if (segue.Identifier == "sliding")
-            {
-                var itvc = (SlidingQuestionViewController)segue.DestinationViewController;
-                if (itvc != null)
-                {
-                   // itvc = new SlidingQuestionViewController(testQu);
-                   //itvc.setQuestion(testQu);
-                }
-            }
+           
             
         }
         

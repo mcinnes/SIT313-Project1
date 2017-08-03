@@ -16,11 +16,17 @@ namespace JSONTest.iOS
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+           
             setQuestion();
+            
+            //Set the title of the screen
             NavigationItem.Title = "Question " + Question.id;
-            questionLabel.Text = Question.text;
-    
-            // Perform any additional setup after loading the view, typically from a nib.
+            questionLabel.Text = Question.text + " : " + Question.help;
+            
+            //Set background image for view
+            UIImage bgImage = new UIImage(filename: "bg.png");
+            this.View.BackgroundColor = UIColor.FromPatternImage(bgImage);
+            
         }
 
         public override void DidReceiveMemoryWarning()
@@ -32,17 +38,18 @@ namespace JSONTest.iOS
          //Shared accross all Question ViewControllers
         public void setQuestion ()
         {
+            //Loads the current question to populate the view.
             Question = App.quizHandler.GetQuestion();
         }
         
         partial void SubmitQuestion(UIButton sender)
         {
-            
+            //Get next question type and perfom the move to the next vc
             String nextQuestionType = App.quizHandler.NextQuestion();
-
+            
+            
             if (nextQuestionType != "ended"){
-                //PerformSegue(nextQuestionType, this);
-
+                //Use the navigation controller to push the new view
                 this.NavigationController.PerformSegue(nextQuestionType, this);
                 
             } else {
